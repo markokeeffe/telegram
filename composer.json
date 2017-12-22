@@ -1,0 +1,25 @@
+{
+    "name": "markokeeffe/telegram",
+    "authors": [
+        {
+            "name": "Mark O",
+            "email": "senshi001@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/danog/phpseclib"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "danog/madelineproto": "dev-master",
+        "phpseclib/phpseclib": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Telegram\\": "src/"
+        }
+    }
+}

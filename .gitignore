@@ -1,0 +1,5 @@
+.idea
+.env
+vendor
+session.madeline
+session.madeline.lock
