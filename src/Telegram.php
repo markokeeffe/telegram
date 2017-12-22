@@ -114,7 +114,12 @@ class Telegram
                 $channelUsername = (isset($channelInfo['Chat']['username']) ? $channelInfo['Chat']['username'] : null);
 
                 if ($channelUsername && isset($channels[$channelUsername])) {
-                    $this->parseMessageForChannel($message, $channels[$channelUsername]);
+                    try {
+                        $this->parseMessageForChannel($message, $channels[$channelUsername]);
+                    } catch (\Exception $e) {
+                        echo $e->getMessage() . PHP_EOL;
+                        $this->outputMessage($message, $timestamp, $channelTitle, $channelUsername);
+                    }
                 } else {
                     $this->outputMessage($message, $timestamp, $channelTitle, $channelUsername);
                 }
@@ -270,14 +275,11 @@ class Telegram
 
     protected function parseMessageForChannel($message, $channel)
     {
-        $coinPair = $channel['getCoinPair']($message);
-        $buyPrice = $channel['getBuyPrice']($message);
-        $targets = $channel['getTargets']($message);
-        $stopLoss = $channel['getStopLoss']($message);
+        $parsed = $channel['parse']($message);
 
         switch ($channel['exchange']) {
             case 'bittrex' :
-                $response = file_get_contents('https://bittrex.com/api/v1.1/public/getticker?market=' . $coinPair['main'] . '-' . $coinPair['alt']);
+                $response = file_get_contents('https://bittrex.com/api/v1.1/public/getticker?market=' . $parsed['coinPair']['main'] . '-' . $parsed['coinPair']['alt']);
                 if (!$response) {
                     throw new \Exception('Unable to get response from Bittrex ticker.');
                 }
@@ -286,7 +288,8 @@ class Telegram
                     throw new \Exception('Error getting Bittrex ticker: ' . $ticker['message']);
                 }
 
-                $priceDiff = $buyPrice - $ticker['result']['Last'];
+                $priceDiff = $parsed['buyPrice'] - $ticker['result']['Last'];
+                $exchangeUrl = 'https://bittrex.com/Market/Index?MarketName=' . $parsed['coinPair']['main'] . '-' . $parsed['coinPair']['alt'];
 
                 break;
             default :
@@ -301,14 +304,15 @@ class Telegram
         echo '==============================================================================================' . PHP_EOL;
 
 
-        echo 'Coin Pair: ' . implode('-', $coinPair) . PHP_EOL;
-        echo 'BUY: ' . number_format($buyPrice, 8) . PHP_EOL;
+        echo 'Coin Pair: ' . implode('-', $parsed['coinPair']) . PHP_EOL;
+        echo 'BUY: ' . number_format($parsed['buyPrice'], 8) . PHP_EOL;
         echo 'TARGETS: ' . PHP_EOL;
-        foreach ($targets as $i => $target) {
+        foreach ($parsed['targets'] as $i => $target) {
             echo '    ' . ($i+1) . ': ' . number_format($target, 8) . PHP_EOL;
         }
-        echo 'STOP LOSS: ' . number_format($stopLoss, 8) . PHP_EOL;
+        echo 'STOP LOSS: ' . number_format($parsed['stopLoss'], 8) . PHP_EOL;
         echo 'PRICE DIFF: ' . number_format($priceDiff, 8) . PHP_EOL;
+        echo 'EXCHANGE: ' . $exchangeUrl . PHP_EOL;
         echo '----------------------------------------------------------------------------------------------' . PHP_EOL;
         echo '----------------------------------------------------------------------------------------------' . PHP_EOL;
         echo '----------------------------------------------------------------------------------------------' . PHP_EOL;
