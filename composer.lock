@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8667777dcf5380937aefb823eac13135",
+    "hash": "02f4ca3ec7aacfb98448b5d28f4425d6",
     "content-hash": "ceead5b1c7b052b76337cf9fe1d5b2ce",
     "packages": [
         {
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/danog/MadelineProto.git",
-                "reference": "6a677c0baff87b3337d0ebd42df19c8dad52dbb8"
+                "reference": "96d01a118c48b40d1d4a0c5a731ac5af5049b405"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danog/MadelineProto/zipball/6a677c0baff87b3337d0ebd42df19c8dad52dbb8",
-                "reference": "6a677c0baff87b3337d0ebd42df19c8dad52dbb8",
+                "url": "https://api.github.com/repos/danog/MadelineProto/zipball/96d01a118c48b40d1d4a0c5a731ac5af5049b405",
+                "reference": "96d01a118c48b40d1d4a0c5a731ac5af5049b405",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "telegram",
                 "video"
             ],
-            "time": "2017-12-17 19:04:45"
+            "time": "2017-12-28 12:26:50"
         },
         {
             "name": "danog/magicalserializer",
@@ -133,12 +133,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/danog/PrimeModule.git",
-                "reference": "837ca7270c2e54bc2f185ddf799aca2213b008d8"
+                "reference": "091b8243d77b6d2e35445de50c3c280ba2f1e1ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danog/PrimeModule/zipball/837ca7270c2e54bc2f185ddf799aca2213b008d8",
-                "reference": "837ca7270c2e54bc2f185ddf799aca2213b008d8",
+                "url": "https://api.github.com/repos/danog/PrimeModule/zipball/091b8243d77b6d2e35445de50c3c280ba2f1e1ae",
+                "reference": "091b8243d77b6d2e35445de50c3c280ba2f1e1ae",
                 "shasum": ""
             },
             "suggest": {
@@ -161,7 +161,7 @@
                 }
             ],
             "description": "Prime module capable of doing prime factorization of huge numbers very quickly.\"",
-            "time": "2017-05-25 14:51:31"
+            "time": "2017-12-22 13:36:22"
         },
         {
             "name": "erusev/parsedown",
@@ -459,12 +459,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rollbar/rollbar-php.git",
-                "reference": "1494753cf3bb115418ab567eb37b33416afd6fc1"
+                "reference": "8472a2d3a2c029b53792545b7a91491c2958c420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rollbar/rollbar-php/zipball/1494753cf3bb115418ab567eb37b33416afd6fc1",
-                "reference": "1494753cf3bb115418ab567eb37b33416afd6fc1",
+                "url": "https://api.github.com/repos/rollbar/rollbar-php/zipball/8472a2d3a2c029b53792545b7a91491c2958c420",
+                "reference": "8472a2d3a2c029b53792545b7a91491c2958c420",
                 "shasum": ""
             },
             "require": {
@@ -510,7 +510,7 @@
                 "logging",
                 "monitoring"
             ],
-            "time": "2017-12-13 09:50:07"
+            "time": "2017-12-30 02:23:29"
         },
         {
             "name": "vlucas/phpdotenv",
